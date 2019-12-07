@@ -1,0 +1,59 @@
+include <iostream>
+#include <algorithm>
+using namespace std;
+ 
+struct
+{
+    int rud, ene, gold;
+};
+ 
+int cutDown(play plays [], int count) {
+    for(int ene = 1; ene<= 1000000000; ene++) {
+        int playsCount = 1;
+        for(int i = 1; i < count; i++) {
+            
+            if(plays[i].ene == ene) {
+                playsCount++;
+            }
+        }
+        while(playsCount > ene) {
+            int cheapestPlayPosition = -1;
+            int cheapestPlayGold = 101;
+            for(int i = 0; i < count; i++) {
+                if(plays[i].ene == ene && plays[i].gold < cheapestPlayGold) {
+                    cheapestPlayGold = plays[i].gold;
+                    cheapestPlayPosition = i;
+                }
+            }
+            plays[cheapestPlayPosition] = plays[--count];
+            playsCount--;
+        }
+    }
+    return count;
+}
+ 
+bool comparator(const play t1, const play t2) {
+    return t1.rud < t2.rud;
+}
+ 
+int main() {
+    int count;
+    cin >> count;
+    play play[count];
+    for(int i = 0; i < count; i++) {
+        play s [i].rud = i;
+        cin >> plays [i].ene >> plays [i].gold;
+    }
+    count = cutDown(plays , count);
+    sort(plays , plays + count, comparator)
+    int maxProfit = 0;
+    do {
+        int profit = 0;
+        for(int i = 0; i < count; i++) {
+            profit += plays[i].ene> i ? plays[i].gold * (plays[i].ene - i) : 0;
+        }
+        maxProfit = max(profit, maxProfit);
+    } while(next_permutation(plays, plays + count, comparator));
+    cout << maxProfit << endl;
+    return 0;
+}
