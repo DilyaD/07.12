@@ -1,0 +1,26 @@
+#include <iostream>\\дедлайн 07.12 задание 4-6
+using namespace std;
+
+int main() {
+ long int n,m,sum,ruz,mul;
+    
+    cout << "Введите число 1 "<< endl;
+    cin >> n;
+
+    cout <<"Введите число 2" << endl;
+    cin >> m;
+    sum = n+m;
+    
+    cout << "Сумма числел ="<<sum<< endl;
+    ruz = n-m;
+    cout <<"Разность чисел ="<<ruz<< endl;
+    mul = n * m;
+    cout <<"Произведение чисел ="<< mul<<endl;
+    
+    cout <<"Остаток от деления ="<< n % m <<endl;
+    
+
+    
+    
+    return 0;
+}
